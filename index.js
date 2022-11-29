@@ -7,7 +7,6 @@ const jwt = require('jsonwebtoken');
 
 require('dotenv').config();
 
-// middleware
 app.use(cors());
 app.use(express.json());
 
@@ -31,20 +30,12 @@ async function run() {
         });
 
 
-
         app.get('/brands', async (req, res) => {
             const query = {};
             const result = await allCategoryCollection.find(query).project({ Category_id: 1 }).toArray();
             res.send(result);
         })
 
-        // app.get('/allProducts', async (req, res) => {
-        //     const email = req.query.email;
-        //     console.log(email);
-        //     const query = { email: email };
-        //     const product = await allProductsCollection.find(query).toArray();
-        //     res.send(product);
-        // });
         app.get('/allProducts', async (req, res) => {
             const query = {};
             const options = await allProductsCollection.find(query).toArray();
@@ -72,18 +63,6 @@ async function run() {
             console.log(options);
             res.send(options);
         });
-
-
-
-        // app.get('/allProducts/:email', async (req, res) => {
-        //     const email = req.query.email;
-        //     console.log(email);
-        //     const query = { email: email };
-        //     const product = await allProductsCollection.find(query).toArray();
-
-        //     res.send(product);
-        // });
-
 
         app.post('/allProducts', async (req, res) => {
             const product = req.body;
@@ -151,9 +130,6 @@ async function run() {
             res.send(result);
 
         })
-
-
-
 
 
 
