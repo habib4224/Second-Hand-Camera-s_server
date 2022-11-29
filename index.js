@@ -155,7 +155,7 @@ async function run() {
 
         // app.get('/allProducts/:Category_id', async (req, res) => {
         //     const id = req.params.Category_id;
-        //     const query = { Category_id: (id) }
+
 
 
         app.get('/myOrders', async (req, res) => {
