@@ -156,8 +156,7 @@ async function run() {
         // app.get('/allProducts/:Category_id', async (req, res) => {
         //     const id = req.params.Category_id;
         //     const query = { Category_id: (id) }
-        //     const options2 = await allProductsCollection.find(query);
-        //     res.send(options2);
+
 
         app.get('/myOrders', async (req, res) => {
             const email = req.query.email;
