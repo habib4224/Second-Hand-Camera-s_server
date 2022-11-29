@@ -93,6 +93,7 @@ async function run() {
 
         app.delete('/allProducts/:id', async (req, res) => {
             const id = req.params.id;
+
             const filter = { _id: ObjectId(id) };
             const result = await allProductsCollection.deleteOne(filter);
             res.send(result);
@@ -105,7 +106,6 @@ async function run() {
             if (user) {
                 const token = jwt.sign({ email }, process.env.ACCESS_TOKEN, { expiresIn: '10h' })
                 return res.send({ accessToken: token });
-
             }
             res.status(403).send({ accessToken: '' })
         })
@@ -158,8 +158,7 @@ async function run() {
         //     const query = { Category_id: (id) }
         //     const options2 = await allProductsCollection.find(query);
         //     res.send(options2);
-        //     // {Category_id : (id)}eivabe diye deken
-        // });
+
         app.get('/myOrders', async (req, res) => {
             const email = req.query.email;
             const query = { email: email };
