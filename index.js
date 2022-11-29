@@ -43,26 +43,40 @@ async function run() {
 
         });
 
-
-
-        app.get('/allProducts/:email', async (req, res) => {
-            const email = req.params?.email;
-            console.log(email);
-            // const query = { _id: ObjectId(id) };
-            const query = { email: email };
-            const service = await allProductsCollection.find(query).toArray();
-            res.send(service);
-
-
-        })
         app.get('/allProducts/:id', async (req, res) => {
             const id = req.params.id;
-            const query = { Category_id: parseInt(id) };
-            console.log(query);
+            const query = { Category_id: id };
+            const query1 = { email: id };
+            console.log("id", id);
             const options = await allProductsCollection.find(query).toArray();
-            console.log(options);
-            res.send(options);
+            const options1 = await allProductsCollection.find(query1).toArray();
+            console.log("options", options);
+            console.log("options1", options1);
+            if (options?.length === 0) {
+                res.send(options1)
+            } else {
+                res.send(options)
+            }
         });
+
+        // app.get('/allProducts/:email', async (req, res) => {
+        //     const email = req.params?.email;
+        //     console.log(email);
+        //     // const query = { _id: ObjectId(id) };
+        //     const query = { email: email };
+        //     const service = await allProductsCollection.find(query).toArray();
+        //     res.send(service);
+
+
+        // })
+        // app.get('/allProducts/:id', async (req, res) => {
+        //     const id = req.params.id;
+        //     const query = { Category_id: parseInt(id) };
+        //     console.log(query);
+        //     const options = await allProductsCollection.find(query).toArray();
+        //     console.log(options);
+        //     res.send(options);
+        // });
 
         app.post('/allProducts', async (req, res) => {
             const product = req.body;
