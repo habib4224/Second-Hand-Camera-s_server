@@ -154,7 +154,6 @@ async function run() {
 
 
         // app.get('/allProducts/:Category_id', async (req, res) => {
-        //     const id = req.params.Category_id;
 
 
 
